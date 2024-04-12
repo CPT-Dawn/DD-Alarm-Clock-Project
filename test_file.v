@@ -1,3 +1,5 @@
+`include "ver_file.v"
+
 module Testbench;
 
  reg reset;
