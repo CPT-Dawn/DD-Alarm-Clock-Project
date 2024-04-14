@@ -2,16 +2,11 @@
 
 module Testbench;
 
-reg reset;
-reg clk;
+reg reset, clk, LD_time, LD_alarm, STOP_al, AL_ON;
 reg [1:0] H_in1;
 reg [3:0] H_in0;
 reg [3:0] M_in1;
 reg [3:0] M_in0;
-reg LD_time;
-reg LD_alarm;
-reg STOP_al;
-reg AL_ON;
 
 wire Alarm;
 wire [1:0] H_out1;
