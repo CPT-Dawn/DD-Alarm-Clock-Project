@@ -70,11 +70,11 @@ tmp_hour <= 0;
 end
 end 
 end
- 
+
 end 
 end 
 end 
- 
+
 always @(posedge clk or posedge reset)
 begin
 if(reset) 
@@ -123,7 +123,7 @@ begin
 if(AL_ON) Alarm <= 1; 
 end
 if(STOP_al) Alarm <=0;
- 
+
 end
 end
 
