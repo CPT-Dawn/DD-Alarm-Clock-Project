@@ -1,4 +1,4 @@
-`include "ver_file.v"
+`include "Ghadi_Design.v"
 
 module Testbench;
 
@@ -94,10 +94,10 @@ STOP_al = 1;
  end
 
 initial begin
-    $dumpfile("simulation_output.vcd");  // Specifies the VCD file to save simulation results
-    $dumpvars(0, Testbench);             // Dumps all variables for waveform tracing
+    $dumpfile("Ghadi_Ki_Output.vcd");  
+    $dumpvars(0, Testbench);             // Sare Variables ko dump kardeta hai for waveform checking
     #100;
-    $finish;                             // Finishes simulation
+    $finish;                             
 end
 
 endmodule
