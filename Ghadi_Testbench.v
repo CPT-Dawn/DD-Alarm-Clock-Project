@@ -2,77 +2,77 @@
 
 module Testbench;
 
-reg reset, clk, LD_time, LD_alarm, STOP_al, AL_ON;    // register variables declare karta hai jo use honge 
-reg [1:0] H_in1;                  //  2 bits
-reg [3:0] H_in0;                  //  4 bits
-reg [3:0] M_in1;                  //  4 bits
-reg [3:0] M_in0;                  //  4 bits
+reg Reset, Ghadi, Load_Samay, Load_Alarm, Alarm_Band, Alarm_Chalu;    // register variables declare karta hai jo use honge 
+reg [1:0] Hours_Ki_Tenth_digit_IN;                                    //  2 bits
+reg [3:0] Hours_Ki_Ones_digit_IN;                                     //  4 bits
+reg [3:0] Mins_Ki_Tenth_digit_IN;                                     //  4 bits
+reg [3:0] Mins_Ki_Ones_digit_IN;                                      //  4 bits
 
-wire Alarm;                       // wire variable Alarm naam ka declare hota hai
-wire [1:0] H_out1;                // 2 bits
-wire [3:0] H_out0;                // 4 bits
-wire [3:0] M_out1;                // 4 bits
-wire [3:0] M_out0;                // 4 bits
-wire [3:0] S_out1;                // 4 bits
-wire [3:0] S_out0;                // 4 bits
+wire Alarm;                                                           // wire variable Alarm naam ka declare hota hai
+wire [1:0] Hours_Ki_Tenth_digit_OUT;                                  // 2 bits
+wire [3:0] Hours_Ki_Ones_digit_OUT;                                   // 4 bits
+wire [3:0] Mins_Ki_Tenth_digit_OUT;                                   // 4 bits
+wire [3:0] Mins_Ki_Ones_digit_OUT;                                    // 4 bits
+wire [3:0] Secs_Ki_Tenth_digit_OUT;                                   // 4 bits
+wire [3:0] Secs_Ki_Ones_digit_OUT;                                    // 4 bits
 
-Aclock uut (                     // Connect karta hai input or output module ko unke register or wire se 
-.reset(reset),
-.clk(clk),
-.H_in1(H_in1),
-.H_in0(H_in0),
-.M_in1(M_in1),
-.M_in0(M_in0),
-.LD_time(LD_time),
-.LD_alarm(LD_alarm),
-.STOP_al(STOP_al),
-.AL_ON(AL_ON),
+Aclock uut (                                                          // Connect karta hai input or output module ko unke register or wire se 
+.Reset(Reset),
+.Ghadi(Ghadi),
+.Hours_Ki_Tenth_digit_IN(Hours_Ki_Tenth_digit_IN),
+.Hours_Ki_Ones_digit_IN(Hours_Ki_Ones_digit_IN),
+.Mins_Ki_Tenth_digit_IN(Mins_Ki_Tenth_digit_IN),
+.Mins_Ki_Ones_digit_IN(Mins_Ki_Ones_digit_IN),
+.Load_Samay(Load_Samay),
+.Load_Alarm(Load_Alarm),
+.Alarm_Band(Alarm_Band),
+.Alarm_Chalu(Alarm_Chalu),
 .Alarm(Alarm),
-.H_out1(H_out1),
-.H_out0(H_out0),
-.M_out1(M_out1),
-.M_out0(M_out0),
-.S_out1(S_out1),
-.S_out0(S_out0)
+.Hours_Ki_Tenth_digit_OUT(Hours_Ki_Tenth_digit_OUT),
+.Hours_Ki_Ones_digit_OUT(Hours_Ki_Ones_digit_OUT),
+.Mins_Ki_Tenth_digit_OUT(Mins_Ki_Tenth_digit_OUT),
+.Mins_Ki_Ones_digit_OUT(Mins_Ki_Ones_digit_OUT),
+.Secs_Ki_Tenth_digit_OUT(Secs_Ki_Tenth_digit_OUT),
+.Secs_Ki_Ones_digit_OUT(Secs_Ki_Ones_digit_OUT)
 );
 
-initial begin                     // simulation chalu karne ke liye block hai 
-clk = 0;                          // clock ko 0 pe initialsise karta hai
-forever #50000000 clk = ~clk;     // Forever loop chalata hai
+initial begin                                                        // simulation chalu karne ke liye block hai 
+Ghadi = 0;                                                           // clock ko 0 pe initialsise karta hai
+forever #50000000 Ghadi = ~Ghadi;                                    // Forever loop chalata hai
 end
 
-initial begin                     // signals ke initial value ko assign karta hai
-reset = 1;                        
-H_in1 = 1;                        
-H_in0 = 0;                        
-M_in1 = 1;                        
-M_in0 = 9;                        
-LD_time = 0;                      
-LD_alarm = 0;                     
-STOP_al = 0;                      
-AL_ON = 0;                        
+initial begin                                                        // signals ke initial value ko assign karta hai
+Reset = 1;                        
+Hours_Ki_Tenth_digit_IN = 1;                        
+Hours_Ki_Ones_digit_IN = 0;                        
+Mins_Ki_Tenth_digit_IN = 1;                        
+Mins_Ki_Ones_digit_IN = 9;                        
+Load_Samay = 0;                      
+Load_Alarm = 0;                     
+Alarm_Band = 0;                      
+Alarm_Chalu = 0;                        
 
-#1000000000;                      // Delays simulation 
-reset = 0;                        // Resets the reset signal
-H_in1 = 1;                        
-H_in0 = 0;                        
-M_in1 = 2;                        
-M_in0 = 0;                        
-LD_time = 0;                      
-LD_alarm = 1;                     
-STOP_al = 0;                      
-AL_ON = 1;                        
+#1000000000;                                                         // Delays simulation 
+Reset = 0;                                                           // Resets the Reset signal
+Hours_Ki_Tenth_digit_IN = 1;                        
+Hours_Ki_Ones_digit_IN = 0;                        
+Mins_Ki_Tenth_digit_IN = 2;                        
+Mins_Ki_Ones_digit_IN = 0;                        
+Load_Samay = 0;                      
+Load_Alarm = 1;                     
+Alarm_Band = 0;                      
+Alarm_Chalu = 1;                        
 
-#1000000000;                      // Delays simulation 
-reset = 0;                        // Resets the reset signal
-H_in1 = 1;                        
-H_in0 = 0;                        
-M_in1 = 2;                        
-M_in0 = 0;                        
-LD_time = 0;                      
-LD_alarm = 0;                     
-STOP_al = 0;                      
-AL_ON = 1;                        
+#1000000000;                                                         // Delays simulation 
+Reset = 0;                                                           // Resets the Reset signal
+Hours_Ki_Tenth_digit_IN = 1;                        
+Hours_Ki_Ones_digit_IN = 0;                        
+Mins_Ki_Tenth_digit_IN = 2;                        
+Mins_Ki_Ones_digit_IN = 0;                        
+Load_Samay = 0;                      
+Load_Alarm = 0;                     
+Alarm_Band = 0;                      
+Alarm_Chalu = 1;                        
 
 #1000000000;                      
 #1000000000;                      
@@ -80,14 +80,14 @@ AL_ON = 1;
 #1000000000;                      
 #1000000000;                      
 #1000000000;                      
-STOP_al = 1;
+Alarm_Band = 1;
 
 end
 
 initial begin                          
     $dumpfile("Ghadi_Ki_Output.vcd");     
-    $dumpvars(0, Testbench);               // sare variables ko dump karta hai for waveform checking
-    #100;                                  // Delays simulation 
+    $dumpvars(0, Testbench);                                        // sare variables ko dump karta hai for waveform checking
+    #100;                                                           // Delays simulation 
     $finish;
 end
 
